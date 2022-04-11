@@ -1,10 +1,9 @@
 <?php
 namespace App\Models;
 
-class Notes
+class NoteModel
 {
     public array $notes = [];
-    public $message;
 
     public function addNote($note)
     {

@@ -1,0 +1,16 @@
+.popUpContainer{
+    width:400px;
+    height:200px;
+    background-color: #ccc;
+    margin:0px auto;
+    padding:10px;
+    font-size:30px;
+}
+
+.displayNone {
+    display: none;
+}
+
+.displayShow {
+    display: block;
+}

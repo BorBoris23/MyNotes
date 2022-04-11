@@ -7,29 +7,29 @@ class Router
 {
     private array $routes = [];
 
-    public function addRoute(string $method, string $path, array $callback)
+    public function addRoute(string $method, string $pattern, array $callback)
     {
-        $this->routes[] = new Route($method, $path, $callback);
+        $this->routes[] = new Route($method, $pattern, $callback);
     }
 
-    public function get(string $path, array $callback)
+    public function get(string $pattern, array $callback)
     {
-        $this->addRoute('get', $path, $callback);
+        $this->addRoute('get', $pattern, $callback);
     }
 
-    public function post(string $path, array $callback)
+    public function post(string $pattern, array $callback)
     {
-        $this->addRoute('post', $path, $callback);
+        $this->addRoute('post', $pattern, $callback);
     }
 
-    public function delete(string $path, array $callback)
+    public function delete(string $pattern, array $callback)
     {
-        $this->addRoute('delete', $path, $callback);
+        $this->addRoute('delete', $pattern, $callback);
     }
 
-    public function patch(string $path, array $callback)
+    public function patch(string $pattern, array $callback)
     {
-        $this->addRoute('patch', $path, $callback);
+        $this->addRoute('patch', $pattern, $callback);
     }
 
     public function dispatch(string $url, string $method)

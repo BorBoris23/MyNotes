@@ -6,13 +6,13 @@ use Closure;
 class Route
 {
     private string $method;
-    private string $path;
+    private string $pattern;
     private Closure $callback;
 
-    public function __construct(string $method, string $path, array $callback)
+    public function __construct(string $method, string $pattern, array $callback)
     {
         $this->method = $method;
-        $this->path = $path;
+        $this->pattern = $pattern;
         $this->callback = $this->prepareCallback($callback);
     }
 
@@ -21,9 +21,9 @@ class Route
         return $this->method;
     }
 
-    public function getPath(): string
+    public function getPattern(): string
     {
-        return $this->path;
+        return $this->pattern;
     }
 
     private function prepareCallback(array $callback): Closure
@@ -36,13 +36,7 @@ class Route
 
     public function match(string $uri, string $method): bool
     {
-        $uri = preg_replace('/\?.*/', '', $uri);
-        return preg_match('/^' . str_replace(['*', '/'], ['\w+', '\/'], $this->getPath()) . '$/', $uri) && $this->getMethod() === $method;
-//        $path = $this->getPath();
-//        var_dump($path);
-//
-//        $pattern = $uri;
-//        return preg_match('uri', $path) && $method === $this->getMethod();
+        return preg_match($this->getPattern(), $uri) && $this->getMethod() === $method;
     }
 
     public function run()

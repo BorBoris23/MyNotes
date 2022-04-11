@@ -50,4 +50,10 @@ final class DoctrineManager
             $this->entityManager->flush($note);
         }
     }
+
+    public function removeRecord($note)
+    {
+        $this->entityManager->remove($note);
+        $this->entityManager->flush();
+    }
 }
